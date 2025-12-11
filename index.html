@@ -294,6 +294,9 @@
     .close-btn { position: absolute; right: 20px; top: 20px; background: transparent; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
 
     /* Responsive */
+    /* ... (Keep all your existing CSS from the previous response up to the Responsive section) ... */
+
+    /* Responsive */
     @media (max-width: 980px){
       .hero { grid-template-columns: 1fr; row-gap: 30px; text-align: center; }
       .hero-left p { margin: 0 auto 24px auto; }
@@ -303,29 +306,38 @@
       .skills { grid-template-columns: 1fr; }
       .testimonials { grid-template-columns: 1fr; }
       
-      /* New Rule: Center hero-card contents in mobile view */
       .hero-card { margin: 0 auto; max-width: 420px; }
-      .floating-icons { right: -15px; top: 20px; } /* Pull it in slightly */
+      .floating-icons { right: -15px; top: 20px; } 
     }
+    
     @media (max-width: 640px){
       nav { display: none; }
       .grid-cases { grid-template-columns: 1fr; }
-      .hero-left h2 { font-size: 28px; }
+      /* Adjust headline font size for better fit on most mobile screens */
+      .hero-left h2 { font-size: 26px; } 
       
-      /* Fix: Reduce container padding on very small screens for more space */
       .container { padding: 10px; } 
-
-      .floating-icons { display: none; } /* Hide floating icons on mobile for space */
-      
-      /* New Rule: Make hero card full width on small screens and reduce its padding */
-      .hero { padding: 30px 20px; }
+      .floating-icons { display: none; } 
+      /* Reduce hero card padding slightly */
+      .hero { padding: 25px 15px; } 
       .hero-card { max-width: 100%; padding: 15px; }
       .profile-photo { height: 250px; }
-      
-      /* New Rule: Adjust footer layout on small screens */
       footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
       .footer-right { width: 100%; }
     }
+    
+    @media (max-width: 420px){ /* NEW BREAKPOINT for very small phones */
+      /* More aggressive reduction for the narrowest screens (like the one in the photo) */
+      .hero-left h2 { font-size: 24px; } 
+      .hero-left p { font-size: 15px; } /* Slightly reduce description text size */
+      .hero { padding: 20px 10px; } /* Minimal padding inside the card */
+      .hero-ctas .cta-btn, .hero-ctas .btn-outline {
+        padding: 8px 16px; /* Smaller buttons to prevent wrapping issues */
+        font-size: 14px;
+      }
+    }
+
+/* ... (Keep the rest of your CSS and HTML the same) ... */
 
     /* Animations */
     @keyframes floatY {
