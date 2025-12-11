@@ -146,7 +146,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero-left p { color: var(--muted); margin: 0 0 24px 0; font-size: 16px; max-width: 500px; }
+    .hero-left p { 
+      color: var(--muted); margin: 0 auto 24px auto; /* Centered on mobile */
+      font-size: 16px; 
+      max-width: 500px; /* Constrains desktop width */
+    }
     
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
     .btn-outline { 
@@ -178,10 +182,10 @@
     }
     .profile-photo img { max-width: 100%; max-height: 100%; object-fit: cover; opacity: 0.9; }
     
+    /* Fixed icon position for desktop */
     .floating-icons { 
       position: absolute; 
-      /* Fix: Change 'left' to 'right' to keep it visible on mobile before being hidden */
-      right: -30px; 
+      right: -30px; /* Positioned relative to the right edge of the card */
       top: 40px; 
       display: flex; flex-direction: column; gap: 14px; 
     }
@@ -294,12 +298,8 @@
     .close-btn { position: absolute; right: 20px; top: 20px; background: transparent; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
 
     /* Responsive */
-    /* ... (Keep all your existing CSS from the previous response up to the Responsive section) ... */
-
-    /* Responsive */
     @media (max-width: 980px){
       .hero { grid-template-columns: 1fr; row-gap: 30px; text-align: center; }
-      .hero-left p { margin: 0 auto 24px auto; }
       .hero-ctas { justify-content: center; }
       .stats { justify-content: center; }
       .grid-cases { grid-template-columns: repeat(2, 1fr); }
@@ -313,8 +313,8 @@
     @media (max-width: 640px){
       nav { display: none; }
       .grid-cases { grid-template-columns: 1fr; }
-      /* Adjust headline font size for better fit on most mobile screens */
-      .hero-left h2 { font-size: 26px; } 
+      /* Final headline adjustment for most phones */
+      .hero-left h2 { font-size: 24px; } 
       
       .container { padding: 10px; } 
       .floating-icons { display: none; } 
@@ -326,18 +326,17 @@
       .footer-right { width: 100%; }
     }
     
-    @media (max-width: 420px){ /* NEW BREAKPOINT for very small phones */
-      /* More aggressive reduction for the narrowest screens (like the one in the photo) */
-      .hero-left h2 { font-size: 24px; } 
-      .hero-left p { font-size: 15px; } /* Slightly reduce description text size */
+    @media (max-width: 420px){ 
+      .hero-left h2 { font-size: 22px; } /* Slightly more aggressive on headline */
+      /* FIX: Constrain the width of the description text to ensure inner padding */
+      .hero-left p { max-width: 90%; font-size: 15px; margin-left: auto; margin-right: auto; }
+      
       .hero { padding: 20px 10px; } /* Minimal padding inside the card */
       .hero-ctas .cta-btn, .hero-ctas .btn-outline {
         padding: 8px 16px; /* Smaller buttons to prevent wrapping issues */
         font-size: 14px;
       }
     }
-
-/* ... (Keep the rest of your CSS and HTML the same) ... */
 
     /* Animations */
     @keyframes floatY {
@@ -360,7 +359,7 @@
   <div class="container">
     <header>
       <div class="brand">
-        <img src="assets/photo.png" alt="Farhan logo / photo" /> 
+        <img src="assets/photo.png" alt="Farhan logo / photo" />
         <div>
           <h1>Farhan Ahmed</h1>
           <div style="color:var(--muted);font-size:13px">Email Marketing & Figma Design</div>
