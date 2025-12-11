@@ -1,4 +1,3 @@
-<!-- Save this file as index.html -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,91 +5,330 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Farhan Ahmed — Email Marketing & Figma Email Design Expert</title>
   <meta name="description" content="Farhan Ahmed — Email Marketing Specialist & Figma Email Designer. High-converting email campaigns, premium Figma templates, copywriting, analytics." />
-  <!-- Google Font -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <!-- FontAwesome for icons -->
   <script src="https://kit.fontawesome.com/2d7f4b5b2a.js" crossorigin="anonymous"></script>
+  
   <style>
     /* =========================
-       Variables & Base
+       Variables & Modern Settings
        ========================= */
     :root{
-      --bg:#06060a;
-      --card:#0f1117;
-      --muted:#9aa3b2;
-      --glass: rgba(255,255,255,0.03);
+      /* UPDATED: Glass Theme Colors */
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --card: rgba(255, 255, 255, 0.03); /* Translucent card */
+      --card-border: rgba(255, 255, 255, 0.1);
+      
+      --muted: #94a3b8;
+      --text-main: #f8fafc;
+      
+      /* Keep your brand neons */
       --neon-teal: #00f0c8;
       --neon-gold: #f6c85f;
       --neon-green: #00e676;
-      --accent: linear-gradient(135deg,var(--neon-teal),var(--neon-gold));
-      --glass-border: rgba(255,255,255,0.04);
-      --glass-strong: rgba(255,255,255,0.06);
+      --accent: linear-gradient(135deg, var(--neon-teal), var(--neon-gold));
+      
       --max-width: 1100px;
-      --radius: 14px;
+      --radius: 16px;
       --ease: cubic-bezier(.2,.9,.3,1);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(0,240,200,0.04), transparent),
-                  radial-gradient(900px 400px at 90% 90%, rgba(246,200,95,0.03), transparent),
-                  var(--bg);
-      color: #e8eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      padding-bottom:60px;
+
+    * { box-sizing: border-box; }
+    
+    html, body { height: 100%; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      overflow-x: hidden; /* Hide scrollbar for floating objects */
+      position: relative;
     }
 
-    .container{max-width:var(--max-width);margin:0 auto;padding:36px 20px;}
-
-    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0;}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand img{width:44px;height:44px;border-radius:10px;object-fit:cover;box-shadow:0 6px 24px rgba(0,0,0,0.6)}
-    .brand h1{font-size:18px;margin:0;font-weight:700;letter-spacing:0.2px}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px;border-radius:8px}
-    nav a:hover{color:#fff;background:rgba(255,255,255,0.02)}
-    .cta-btn{background:var(--accent);padding:10px 14px;border-radius:12px;color:#041014;font-weight:700;border:none;cursor:pointer;box-shadow:0 6px 30px rgba(0,0,0,0.6)}
-
-    .hero{
-      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px;
-      position:relative;padding:28px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);
-      border:1px solid var(--glass-border);backdrop-filter: blur(6px);
+    /* =========================
+       FLOATING BACKGROUND ORBS
+       ========================= */
+    .shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        z-index: -1; /* Behind content */
+        opacity: 0.5;
+        animation: floatShape 10s infinite alternate;
     }
-    .hero-left h2{font-size:34px;margin:0 0 10px 0;line-height:1.05}
-    .hero-left p{color:var(--muted);margin:0 0 18px 0;font-size:15px}
+    .shape-1 {
+        top: -10%; left: -10%; width: 500px; height: 500px;
+        background: #7c3aed; /* Purple */
+        animation-delay: 0s;
+    }
+    .shape-2 {
+        bottom: 10%; right: -10%; width: 400px; height: 400px;
+        background: #06b6d4; /* Cyan */
+        animation-delay: -5s;
+    }
+    .shape-3 {
+        top: 30%; right: 20%; width: 200px; height: 200px;
+        background: #db2777; /* Pink */
+        filter: blur(60px);
+        animation: floatShapeReverse 12s infinite alternate;
+    }
 
-    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
-    .btn-outline{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#d9e6f2;font-weight:700;cursor:pointer}
+    @keyframes floatShape {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(50px, 50px); }
+    }
+    @keyframes floatShapeReverse {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(-30px, 40px); }
+    }
 
-    .stats{display:flex;gap:18px;margin-top:18px}
-    .stat{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:10px;border-radius:12px;min-width:110px;text-align:center;border:1px solid rgba(255,255,255,0.03)}
-    .stat h3{margin:0;font-size:18px}
-    .stat p{margin:4px 0 0 0;color:var(--muted);font-size:13px}
+    /* =========================
+       MAIN LAYOUT
+       ========================= */
+    /* Glass Container */
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.01); /* Subtle global tint */
+      backdrop-filter: blur(0px); /* We keep blur on cards instead for performance */
+    }
 
-    .hero-card{position:relative;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:18px;border:1px solid rgba(255,255,255,0.03)}
-    .profile-photo{width:100%;height:280px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#0b0d13, #0d0f15);display:flex;align-items:center;justify-content:center}
-    .profile-photo img{max-width:100%;max-height:100%;object-fit:cover;opacity:0.95;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.6))}
+    /* Header / Nav */
+    header { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; margin-bottom: 20px; }
+    
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .brand img { 
+      width: 44px; height: 44px; border-radius: 12px; object-fit: cover; 
+      box-shadow: 0 0 20px rgba(0, 240, 200, 0.3); 
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .brand h1 { font-size: 18px; margin: 0; font-weight: 700; letter-spacing: 0.2px; }
+    
+    nav { display: flex; gap: 10px; align-items: center; }
+    nav a { 
+      color: var(--muted); text-decoration: none; font-weight: 500; font-size: 14px; 
+      padding: 8px 12px; border-radius: 20px; transition: all 0.3s ease;
+    }
+    nav a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    
+    .cta-btn {
+      background: var(--accent);
+      padding: 10px 20px; border-radius: 50px; /* Pill shape */
+      color: #0f172a; font-weight: 700; border: none; cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 240, 200, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(0, 240, 200, 0.6); }
 
-    .floating-icons{position:absolute;left:-30px;top:40px;display:flex;flex-direction:column;gap:14px}
-    .float{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg, rgba(255,255,255,0.02), transparent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+    /* Hero Glass Card */
+    .hero {
+      display: grid; grid-template-columns: 1fr 420px; gap: 40px; align-items: center;
+      margin-top: 10px; position: relative; padding: 40px;
+      border-radius: 24px;
+      
+      /* Glassmorphism */
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-left h2 { 
+      font-size: 38px; margin: 0 0 15px 0; line-height: 1.1; 
+      background: linear-gradient(to right, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-left p { color: var(--muted); margin: 0 0 24px 0; font-size: 16px; max-width: 500px; }
+    
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+    .btn-outline { 
+      padding: 10px 20px; border-radius: 50px; 
+      border: 1px solid rgba(255,255,255,0.2); background: transparent; 
+      color: #fff; font-weight: 600; cursor: pointer; transition: 0.3s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: #fff; }
 
-    /* ** YOUR UPDATED HERO IMAGE BELOW ** */
+    .stats { display: flex; gap: 20px; }
+    .stat { 
+      background: rgba(0,0,0,0.2); padding: 12px 16px; border-radius: 12px; 
+      min-width: 100px; text-align: center; border: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat h3 { margin: 0; font-size: 20px; color: var(--neon-teal); }
+    .stat p { margin: 4px 0 0 0; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Hero Right Card */
+    .hero-card { 
+      position: relative; border-radius: 20px; 
+      background: rgba(255,255,255,0.02); padding: 20px; 
+      border: 1px solid rgba(255,255,255,0.05); 
+    }
+    .profile-photo { 
+      width: 100%; height: 280px; border-radius: 16px; overflow: hidden; 
+      background: linear-gradient(180deg, #1e293b, #0f172a); 
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .profile-photo img { max-width: 100%; max-height: 100%; object-fit: cover; opacity: 0.9; }
+    
+    .floating-icons { position: absolute; left: -30px; top: 40px; display: flex; flex-direction: column; gap: 14px; }
+    .float-icon { 
+      width: 56px; height: 56px; border-radius: 16px; 
+      background: rgba(30, 41, 59, 0.8); /* Dark glass */
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center; 
+      border: 1px solid rgba(255,255,255,0.1); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .float-icon svg, .float-icon i { width: 24px; height: 24px; font-size: 24px; }
+
+    /* Sections General */
+    section { margin-top: 60px; }
+    .section-title { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;}
+    .section-title h3 { margin: 0; font-size: 24px; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .section-title p { color: var(--neon-teal); font-size: 13px; margin: 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Skills Grid */
+    .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .skill-card { 
+      background: var(--card); padding: 20px; border-radius: 16px; 
+      border: 1px solid var(--card-border); display: flex; align-items: center; gap: 16px;
+      transition: 0.3s;
+    }
+    .skill-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
+    .skill-card i { font-size: 24px; color: var(--neon-teal); }
+    .skill-card h4 { margin: 0; font-size: 16px; color: #fff; }
+    .skill-card p { margin: 4px 0 0 0; color: var(--muted); font-size: 13px; }
+
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 16px; }
+    .timeline-card { 
+      display: flex; gap: 16px; align-items: flex-start; 
+      background: linear-gradient(90deg, rgba(255,255,255,0.02) 0%, transparent 100%); 
+      padding: 20px; border-radius: 16px; border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .timeline-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--neon-gold); margin-top: 6px; flex-shrink: 0; box-shadow: 0 0 10px var(--neon-gold); }
+    .timeline-card h4 { margin: 0; font-size: 16px; color: #fff; }
+    .timeline-card p { color: var(--muted); margin: 6px 0 0 0; font-size: 14px; }
+
+    /* Case Studies */
+    .grid-cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .case { 
+      background: var(--card); padding: 16px; border-radius: 20px; 
+      border: 1px solid var(--card-border); transition: transform 0.3s var(--ease);
+      backdrop-filter: blur(10px);
+    }
+    .case img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; opacity: 0.8; transition: 0.3s; }
+    .case:hover img { opacity: 1; }
+    .case h4 { margin: 0 0 6px 0; font-size: 17px; color: #fff; }
+    .case p { color: var(--muted); margin: 0; font-size: 13px; line-height: 1.5; }
+    .case:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--neon-teal); }
+
+    /* Tools */
+    .tools { display: flex; gap: 16px; flex-wrap: wrap; }
+    .tool { 
+      width: 90px; height: 90px; border-radius: 16px; 
+      background: rgba(255,255,255,0.03); 
+      display: flex; align-items: center; justify-content: center; 
+      border: 1px solid rgba(255,255,255,0.05); flex-direction: column; padding: 10px;
+      transition: 0.3s;
+    }
+    .tool:hover { background: rgba(255,255,255,0.1); transform: scale(1.05); }
+    .tool img { width: 32px; height: 32px; object-fit: contain; margin-bottom: 8px; }
+    .tool small { color: var(--muted); font-size: 11px; }
+
+    /* Testimonials */
+    .testimonials { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .test-card { 
+      background: var(--card); padding: 24px; border-radius: 16px; 
+      border: 1px solid var(--card-border); display: flex; gap: 16px; align-items: flex-start; 
+    }
+    .avatar { 
+      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--neon-teal), var(--neon-gold)); 
+      display: flex; align-items: center; justify-content: center; 
+      font-weight: 800; color: #0f172a; font-size: 20px; 
+    }
+
+    /* Footer */
+    footer { 
+      margin-top: 60px; padding: 30px; border-radius: 20px; 
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); 
+      display: flex; justify-content: space-between; align-items: center; 
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Modal */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 9999; }
+    .modal { 
+      width: 100%; max-width: 600px; 
+      background: #1e293b; /* Solid backing for readability */
+      border-radius: 24px; padding: 30px; 
+      border: 1px solid rgba(255,255,255,0.1); position: relative; 
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    .form-field { display: flex; flex-direction: column; gap: 8px; }
+    label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+    input, select, textarea { 
+      padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); 
+      background: rgba(0,0,0,0.2); color: #fff; outline: none; font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--neon-teal); background: rgba(0,0,0,0.4); }
+    textarea { min-height: 100px; resize: vertical; }
+    .submit { margin-top: 20px; width: 100%; padding: 14px; border-radius: 12px; border: none; background: var(--accent); color: #0f172a; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    .submit:hover { opacity: 0.9; transform: scale(0.99); }
+    .close-btn { position: absolute; right: 20px; top: 20px; background: transparent; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero { grid-template-columns: 1fr; row-gap: 30px; text-align: center; }
+      .hero-left p { margin: 0 auto 24px auto; }
+      .hero-ctas { justify-content: center; }
+      .stats { justify-content: center; }
+      .grid-cases { grid-template-columns: repeat(2, 1fr); }
+      .skills { grid-template-columns: 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px){
+      nav { display: none; }
+      .grid-cases { grid-template-columns: 1fr; }
+      .hero-left h2 { font-size: 28px; }
+      .container { padding: 10px; }
+      .floating-icons { display: none; } /* Hide floating icons on mobile for space */
+    }
+
+    /* Animations */
+    @keyframes floatY {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .float-anim { animation: floatY 4s var(--ease) infinite; }
+    .float-anim:nth-child(2){ animation-delay: 0.5s; }
+    .float-anim:nth-child(3){ animation-delay: 1s; }
+
   </style>
 </head>
-
 <body>
-  <div class="container">
 
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="shape shape-3"></div>
+
+  <div class="container">
     <header>
       <div class="brand">
         <img src="assets/photo.png" alt="Farhan logo / photo" />
         <div>
           <h1>Farhan Ahmed</h1>
-          <div style="color:var(--muted);font-size:13px">Email Marketing & Figma Email Designer</div>
+          <div style="color:var(--muted);font-size:13px">Email Marketing & Figma Design</div>
         </div>
       </div>
 
@@ -103,11 +341,10 @@
       </nav>
     </header>
 
-    <!-- HERO -->
     <main class="hero" role="main" aria-label="Hero">
       <div class="hero-left">
         <h2>Email Marketing & Figma Email Design Expert</h2>
-        <p>Crafting high-converting email campaigns & designing premium templates that boost engagement and conversions.</p>
+        <p>Crafting high-converting email campaigns & designing premium templates that boost engagement and conversions. Fast turnarounds — polished, responsive Figma templates ready for development.</p>
 
         <div class="hero-ctas">
           <button class="cta-btn" id="viewWorkBtn">View My Work</button>
@@ -115,36 +352,290 @@
         </div>
 
         <div class="stats" aria-hidden>
-          <div class="stat"><h3>3+ yrs</h3><p>Experience</p></div>
-          <div class="stat"><h3>100+</h3><p>Campaigns Designed</p></div>
-          <div class="stat"><h3>30%↑</h3><p>Avg Engagement Lift</p></div>
+          <div class="stat">
+            <h3>3+ yrs</h3><p>Experience</p>
+          </div>
+          <div class="stat">
+            <h3>100+</h3><p>Campaigns</p>
+          </div>
+          <div class="stat">
+            <h3>30%↑</h3><p>Avg Lift</p>
+          </div>
         </div>
       </div>
 
-      <!-- ⭐ UPDATED HERO IMAGE IS BELOW ⭐ -->
       <div class="hero-card" aria-hidden>
         <div class="floating-icons" style="left: -40px;">
-          <div class="float"><i class="fab fa-figma"></i></div>
-          <div class="float"><i class="fas fa-envelope" style="color:var(--neon-gold)"></i></div>
-          <div class="float"><i class="fas fa-chart-line" style="color:var(--neon-teal)"></i></div>
+          <div class="float-icon float-anim" title="Figma">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12.5A2.5 2.5 0 1 1 12 7.5" stroke="#00f0c8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="float-icon float-anim">
+            <i class="fas fa-envelope" style="color:var(--neon-gold)"></i>
+          </div>
+          <div class="float-icon float-anim">
+            <i class="fas fa-chart-line" style="color:var(--neon-teal)"></i>
+          </div>
         </div>
 
         <div class="profile-photo">
-          <img src="https://github.com/FarhanAhmed-create/email.maketing-/blob/main/new.jpg?raw=true"
-               alt="Farhan Ahmed — Hero Profile Photo">
+          <img src="assets/photo.png" alt="Farhan Ahmed">
         </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:15px">
           <div>
-            <strong>Farhan Ahmed</strong>
-            <div style="color:var(--muted);font-size:13px">Email Marketing & Figma Email Designer</div>
+            <strong style="color:white">Farhan Ahmed</strong>
+            <div style="color:var(--muted);font-size:12px">Email Marketing Expert</div>
           </div>
           <div style="text-align:right">
-            <div style="font-weight:700">Karachi, PK</div>
+            <div style="font-weight:700; color:white">Karachi, PK</div>
             <div style="color:var(--muted);font-size:12px">farhan@totebreeze.com</div>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Your code continues exactly same below… -->
+    <section id="what" aria-labelledby="what-title">
+      <div class="section-title">
+        <h3 id="what-title">What I Do</h3>
+        <p>Services & Specialities</p>
+      </div>
+
+      <div class="skills">
+        <div class="skill-card">
+          <i class="fas fa-bullseye"></i>
+          <div>
+            <h4>Email campaign strategy</h4>
+            <p>Plan and run lifecycle campaigns and newsletters with measurable KPIs.</p>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fab fa-figma"></i>
+          <div>
+            <h4>Figma email template design</h4>
+            <p>Responsive, modular templates built in Figma for easy developer handoff.</p>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-pencil-alt"></i>
+          <div>
+            <h4>High-converting copywriting</h4>
+            <p>Short, direct email copy that converts — subject lines, CTAs and offers.</p>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-chart-pie"></i>
+          <div>
+            <h4>Analytics & reporting</h4>
+            <p>Performance reports, cohort analysis, and improvements to increase ROI.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="exp-title">
+      <div class="section-title">
+        <h3 id="exp-title">Experience</h3>
+        <p>Career Timeline</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-card">
+          <div class="timeline-dot"></div>
+          <div>
+            <h4>GE Solutions — Email Marketing & Figma Designer</h4>
+            <p style="color:var(--neon-teal); font-size: 12px; margin-bottom: 5px;">Apr 2023 — Present</p>
+            <p>Designed modular Figma email templates, led campaign builds, and partnered with product & marketing. Improved click-through rates by optimizing layouts.</p>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-dot" style="background:var(--neon-teal)"></div>
+          <div>
+            <h4>Digix Solutions — Email Marketing Associate</h4>
+            <p style="color:var(--neon-teal); font-size: 12px; margin-bottom: 5px;">Feb 2022 — Mar 2023</p>
+            <p>Managed end-to-end campaigns, wrote conversion-driven copy, and produced performance reports.</p>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-dot" style="background:var(--neon-gold)"></div>
+          <div>
+            <h4>Community Care — Volunteer Coordinator</h4>
+            <p style="color:var(--neon-teal); font-size: 12px; margin-bottom: 5px;">May 2024 — Aug 2024</p>
+            <p>Designed awareness campaigns and donor outreach emails in Figma — increased donations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <div class="section-title">
+        <h3 id="work-title">Portfolio</h3>
+        <p>Selected Case Studies</p>
+      </div>
+
+      <div class="grid-cases">
+        <div class="case">
+          <img src="assets/case1.png" alt="Case Study 1">
+          <h4>Product Launch Series</h4>
+          <p>Figma-designed responsive templates + A/B tested subject lines. 28% uplift in open rate.</p>
+        </div>
+
+        <div class="case">
+          <img src="assets/case2.png" alt="Case Study 2">
+          <h4>Newsletter Redesign</h4>
+          <p>Modular template system for rapid content updates and consistent brand experience.</p>
+        </div>
+
+        <div class="case">
+          <img src="assets/case3.png" alt="Case Study 3">
+          <h4>Lifecycle Optimization</h4>
+          <p>Improved onboarding sequence — increased first-purchase conversion by 19%.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" aria-labelledby="tools-title">
+      <div class="section-title">
+        <h3 id="tools-title">Stack</h3>
+        <p>Tools & Tech</p>
+      </div>
+
+      <div class="tools">
+        <div class="tool"><img src="assets/logo-figma.svg" alt="Figma"><small>Figma</small></div>
+        <div class="tool"><img src="assets/logo-klaviyo.svg" alt="Klaviyo"><small>Klaviyo</small></div>
+        <div class="tool"><img src="assets/logo-mailchimp.svg" alt="Mailchimp"><small>Mailchimp</small></div>
+        <div class="tool"><img src="assets/logo-analytics.svg" alt="Analytics"><small>Analytics</small></div>
+        <div class="tool"><img src="assets/logo-notion.svg" alt="Notion"><small>Notion</small></div>
+      </div>
+    </section>
+
+    <section id="testimonials" aria-labelledby="test-title">
+      <div class="section-title">
+        <h3 id="test-title">Feedback</h3>
+        <p>Client Reviews</p>
+      </div>
+
+      <div class="testimonials">
+        <div class="test-card">
+          <div class="avatar">F</div>
+          <div>
+            <strong>"Farhan elevated our email engagement instantly."</strong>
+            <p style="color:var(--muted);margin-top:8px; font-size:13px;">Clean templates, quick iterations, and clear reporting. Campaigns improved within the first two sends.</p>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="avatar">A</div>
+          <div>
+            <strong>"Clean, professional Figma templates delivered fast."</strong>
+            <p style="color:var(--muted);margin-top:8px; font-size:13px;">Hand-off was effortless — devs loved the organized Figma components.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-left">
+        <div>
+          <h4>Let’s Build High-Converting Email Campaigns.</h4>
+          <div style="color:var(--muted);font-size:13px">Available for freelance & contract work</div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <button class="cta-btn" id="hireBtnFooter">Hire Me</button>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal-backdrop" id="modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-btn" id="closeModal"><i class="fas fa-times"></i></button>
+      <h3 id="modalTitle">Let’s Begin Your Project</h3>
+      <p style="color:var(--muted);margin-top:6px">Please share a few project details.</p>
+
+      <form id="hireForm" method="POST" action="#">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required>
+          </div>
+
+          <div class="form-field">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Email Marketing</option>
+              <option>Figma Email Template</option>
+              <option>Email Copywriting</option>
+              <option>Automation / Flows</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget" required>
+              <option value="">Select</option>
+              <option>$50 - $150</option>
+              <option>$150 - $300</option>
+              <option>$300+</option>
+            </select>
+          </div>
+
+          <div class="form-field" style="grid-column:1 / -1">
+            <label for="desc">Project Description</label>
+            <textarea id="desc" name="description" placeholder="Briefly, what do you need?" required></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="submit">Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const modal = document.getElementById('modal');
+      const hireBtn = document.getElementById('hireBtn');
+      const hireBtnFooter = document.getElementById('hireBtnFooter');
+      const closeModal = document.getElementById('closeModal');
+      const viewWorkBtn = document.getElementById('viewWorkBtn');
+      const downloadBtn = document.getElementById('downloadBtn');
+
+      function openModal(){ modal.style.display = 'flex'; document.body.style.overflow='hidden'; }
+      function close(){ modal.style.display = 'none'; document.body.style.overflow='auto'; }
+
+      if(hireBtn) hireBtn.addEventListener('click', openModal);
+      if(hireBtnFooter) hireBtnFooter.addEventListener('click', openModal);
+      if(closeModal) closeModal.addEventListener('click', close);
+      modal.addEventListener('click', (e)=>{ if(e.target===modal) close(); });
+
+      if(viewWorkBtn) viewWorkBtn.addEventListener('click', ()=>{ document.querySelector('#work').scrollIntoView({behavior:'smooth'}); });
+      if(downloadBtn) downloadBtn.addEventListener('click', ()=>{ window.open('assets/Farhan_Ahmed_Resume.pdf','_blank') });
+
+      const form = document.getElementById('hireForm');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        alert('Thanks — your request has been simulated. (Connect a backend to make this real!)');
+        close();
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          const id = this.getAttribute('href').slice(1);
+          const el = document.getElementById(id);
+          if(el) el.scrollIntoView({behavior:'smooth'});
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
