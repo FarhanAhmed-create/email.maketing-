@@ -11,8 +11,8 @@
   
   <style>
     /* =========================
-       Variables & Modern Settings
-       ========================= */
+      Variables & Modern Settings
+      ========================= */
     :root{
       /* UPDATED: Glass Theme Colors */
       --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -48,8 +48,8 @@
     }
 
     /* =========================
-       FLOATING BACKGROUND ORBS
-       ========================= */
+      FLOATING BACKGROUND ORBS
+      ========================= */
     .shape {
         position: absolute;
         border-radius: 50%;
@@ -85,17 +85,18 @@
     }
 
     /* =========================
-       MAIN LAYOUT
-       ========================= */
+      MAIN LAYOUT
+      ========================= */
     /* Glass Container */
     .container {
       position: relative;
       z-index: 10;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 30px 20px;
+      /* Adjusted padding to be symmetrical for better responsiveness */
+      padding: 30px 20px; 
       background: rgba(255, 255, 255, 0.01); /* Subtle global tint */
-      backdrop-filter: blur(0px); /* We keep blur on cards instead for performance */
+      backdrop-filter: blur(0px); 
     }
 
     /* Header / Nav */
@@ -177,7 +178,13 @@
     }
     .profile-photo img { max-width: 100%; max-height: 100%; object-fit: cover; opacity: 0.9; }
     
-    .floating-icons { position: absolute; left: -30px; top: 40px; display: flex; flex-direction: column; gap: 14px; }
+    .floating-icons { 
+      position: absolute; 
+      /* Fix: Change 'left' to 'right' to keep it visible on mobile before being hidden */
+      right: -30px; 
+      top: 40px; 
+      display: flex; flex-direction: column; gap: 14px; 
+    }
     .float-icon { 
       width: 56px; height: 56px; border-radius: 16px; 
       background: rgba(30, 41, 59, 0.8); /* Dark glass */
@@ -295,13 +302,29 @@
       .grid-cases { grid-template-columns: repeat(2, 1fr); }
       .skills { grid-template-columns: 1fr; }
       .testimonials { grid-template-columns: 1fr; }
+      
+      /* New Rule: Center hero-card contents in mobile view */
+      .hero-card { margin: 0 auto; max-width: 420px; }
+      .floating-icons { right: -15px; top: 20px; } /* Pull it in slightly */
     }
     @media (max-width: 640px){
       nav { display: none; }
       .grid-cases { grid-template-columns: 1fr; }
       .hero-left h2 { font-size: 28px; }
-      .container { padding: 10px; }
+      
+      /* Fix: Reduce container padding on very small screens for more space */
+      .container { padding: 10px; } 
+
       .floating-icons { display: none; } /* Hide floating icons on mobile for space */
+      
+      /* New Rule: Make hero card full width on small screens and reduce its padding */
+      .hero { padding: 30px 20px; }
+      .hero-card { max-width: 100%; padding: 15px; }
+      .profile-photo { height: 250px; }
+      
+      /* New Rule: Adjust footer layout on small screens */
+      footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
+      .footer-right { width: 100%; }
     }
 
     /* Animations */
@@ -325,7 +348,7 @@
   <div class="container">
     <header>
       <div class="brand">
-        <img src="assets/photo.png" alt="Farhan logo / photo" />
+        <img src="assets/photo.png" alt="Farhan logo / photo" /> 
         <div>
           <h1>Farhan Ahmed</h1>
           <div style="color:var(--muted);font-size:13px">Email Marketing & Figma Design</div>
@@ -365,7 +388,7 @@
       </div>
 
       <div class="hero-card" aria-hidden>
-        <div class="floating-icons" style="left: -40px;">
+        <div class="floating-icons">
           <div class="float-icon float-anim" title="Figma">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12.5A2.5 2.5 0 1 1 12 7.5" stroke="#00f0c8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
